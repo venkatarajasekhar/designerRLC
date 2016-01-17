@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/tomichi/ClionProjects/designerRLC/Expression.cpp
+Expression.h
+/Users/tomichi/ClionProjects/designerRLC/Expression.h
+
+/Users/tomichi/ClionProjects/designerRLC/Expression.h
+
+/Users/tomichi/ClionProjects/designerRLC/Variables.cpp
+Variables.h
+/Users/tomichi/ClionProjects/designerRLC/Variables.h
+
+/Users/tomichi/ClionProjects/designerRLC/Variables.h
+vector
+-
+fstream
+-
+cstring
+-
+cstdio
+-
+iostream
+-
+
+/Users/tomichi/ClionProjects/designerRLC/main.cpp
+iostream
+-
+vector
+-
+Variables.h
+/Users/tomichi/ClionProjects/designerRLC/Variables.h
+Expression.h
+/Users/tomichi/ClionProjects/designerRLC/Expression.h
+
