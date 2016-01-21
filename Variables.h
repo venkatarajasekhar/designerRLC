@@ -2,24 +2,24 @@
 #define DESIGNERRLC_VARIABLES_H
 
 #include <vector>
+#include <string>
 #include <fstream>
-#include <cstring>
-#include <cstdio>
+#include <sstream>
 #include <iostream>
 
-struct Variable{
-    char *name = nullptr;
+struct Variable {
+    std::string name;
     double value;
-    ~Variable();
-    Variable &operator=(const Variable & a);
-    Variable();
-    Variable(const Variable & a);
 };
 
-int loadVariables(char * pathSource, std::vector<Variable> & globVariable);
+void loadVariables(const char *pathSource, std::vector<Variable> &globVariable);
+
 void printGlobalVariable(std::vector<Variable> &globVariable);
-void copyNameOfVariable(struct Variable & tmpVariable, int size, const char * name);
-void readValueFromString(struct Variable &tmpVariable, const char *source);
-int searchVariableInVariablesStore(std::vector<Variable> & vectorStore, const char * findVariableName);
+
+int searchVariableInVariablesStore(std::vector<Variable> &vectorStore, std::string findVariableName);
+
+
+void initMathVariable(std::vector<Variable> &globVariables);
+
 
 #endif //DESIGNERRLC_VARIABLES_H
