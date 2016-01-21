@@ -22,6 +22,10 @@ int main(int argc, char * argv[]) {
     cout << searchVariableInVariablesStore(variables, "R1") << "\n" <<
             searchVariableInVariablesStore(variables, "C2");
 
+    cout << "\n";
+   loadExpressions("/Users/tomichi/ClionProjects/designerRLC/expression.txt", expression);
+    printGlobalExpressions(expression);
+
 
 
 

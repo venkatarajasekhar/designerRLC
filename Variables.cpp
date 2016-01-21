@@ -1,10 +1,38 @@
 #include "Variables.h"
 
+// Destructor of object and free memory
+Variable::~Variable() {
+    if (this->name != nullptr) {
+        free(this->name);
+        this->name = nullptr;
+    }
+}
+
+Variable::Variable() {
+
+}
+
+Variable::Variable(const Variable & a) {
+    int length;
+    value = a.value;
+    length = (int) std::strlen(a.name);
+    name = (char *) malloc(sizeof(char) * length);
+    std::strcpy(name, a.name);
+}
+
+Variable & Variable::operator=(const Variable & a) {
+    int length;
+    value = a.value;
+    length = (int) std::strlen(a.name);
+    name = (char *) malloc(sizeof(char) * length);
+    std::strcpy(name, a.name);
+    return *this;
+}
+
 int loadVariables(char *pathSource, std::vector<Variable> &globVariable) {
     std::ifstream ifs(pathSource); // nacteni souboru
     char newLine[50];
     int lineLength = 0, i = 0;
-    double tmpValue;
     struct Variable tmpVariable;
     while (ifs.getline(newLine, 50)) {
         lineLength = (int) std::strlen(newLine);
@@ -13,10 +41,11 @@ int loadVariables(char *pathSource, std::vector<Variable> &globVariable) {
                 copyNameOfVariable(tmpVariable, i, newLine);
                 readValueFromString(tmpVariable, newLine + i + 1);
                 globVariable.push_back(tmpVariable);
+                free(tmpVariable.name);
+                tmpVariable.name = nullptr;
                 break;
             }
         }
-
     }
 }
 

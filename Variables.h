@@ -10,6 +10,10 @@
 struct Variable{
     char *name = nullptr;
     double value;
+    ~Variable();
+    Variable &operator=(const Variable & a);
+    Variable();
+    Variable(const Variable & a);
 };
 
 int loadVariables(char * pathSource, std::vector<Variable> & globVariable);
