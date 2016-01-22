@@ -3,6 +3,7 @@
 #include "Variables.h"
 #include "Expression.h"
 #include "PolishNotation.h"
+#include "FrequencyCharacteristic.h"
 
 
 using namespace std;
@@ -11,6 +12,12 @@ int main(int argc, char *argv[]) {
     vector<Variable> variables;
     initMathVariable(variables);
     vector<Expression> expression;
+
+    int **arrayFrequency = new int * [10];
+    initArray(arrayFrequency, 10);
+    printArray(arrayFrequency, 10);
+    deleteArray(arrayFrequency, 10);
+
 
     /* if (argc != 3) {
          cout << "Nevyhovuje seznam parametru programu.\n"
