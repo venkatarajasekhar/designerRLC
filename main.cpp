@@ -36,19 +36,19 @@ void printSubMenu() {
 }
 
 int main(int argc, char *argv[]) {
+    bool changeVariable = false;
     vector<Variable> variables;
     initMathVariable(variables);
     vector<Expression> expression;
 
-    /* if (argc != 3) {
+    if (argc != 3) {
          cout << "Nevyhovuje seznam parametru programu.\n"
                          "Vlozte prosim v poradi promenne.txt a pote vzorce.txt";
          return 1;
      }
- */
 
-    loadVariables("/Users/tomichi/ClionProjects/designerRLC/variable.txt", variables);
-    loadExpressions("/Users/tomichi/ClionProjects/designerRLC/expression.txt", expression);
+    loadVariables(argv[1], variables);
+    loadExpressions(argv[2], expression);
     int **arrayFrequency = new int *[10];
     initArray(arrayFrequency, 10);
     //printArray(arrayFrequency, 10);
@@ -85,6 +85,7 @@ int main(int argc, char *argv[]) {
                         break;
                     }
                     variables.at(index).value = R_value;
+                    changeVariable = true;
                 }
                 if (solutionDerivate == 3 || solutionDerivate == 6) {
                     double C_value;
@@ -98,6 +99,7 @@ int main(int argc, char *argv[]) {
                         break;
                     }
                     variables.at(index).value = C_value;
+                    changeVariable = true;
                 }
                 if (solutionDerivate == 4 || solutionDerivate == 5) {
                     double L_value;
@@ -111,6 +113,7 @@ int main(int argc, char *argv[]) {
                         break;
                     }
                     variables.at(index).value = L_value;
+                    changeVariable = true;
                 }
 
                 std::cout << "Mezni frekvence je " << getFrequency(solutionDerivate, variables, expression) << " Hz\n";
@@ -139,6 +142,7 @@ int main(int argc, char *argv[]) {
                         break;
                     }
                     variables.at(index).value = R_value;
+                    changeVariable = true;
                 }
                 if (solutionIntegrate == 3 || solutionIntegrate == 6) {
                     double C_value;
@@ -152,6 +156,7 @@ int main(int argc, char *argv[]) {
                         break;
                     }
                     variables.at(index).value = C_value;
+                    changeVariable = true;
                 }
                 if (solutionIntegrate == 4 || solutionIntegrate == 5) {
                     double L_value;
@@ -165,6 +170,7 @@ int main(int argc, char *argv[]) {
                         break;
                     }
                     variables.at(index).value = L_value;
+                    changeVariable = true;
                 }
 
                 std::cout << "Mezni frekvence je " << getFrequency(solutionIntegrate, variables, expression) << " Hz\n";
@@ -182,6 +188,13 @@ int main(int argc, char *argv[]) {
     }
 
     deleteArray(arrayFrequency, 10);
+    if (changeVariable) {
+        std::ofstream ofs(argv[1]);
+        for(int i = 2; i < variables.size(); i++) {
+            ofs << variables.at(i).name << " = " << variables.at(i).value << "\n";
+        }
+        ofs.close();
+    }
 
     return 0;
 }
