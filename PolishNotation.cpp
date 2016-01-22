@@ -94,25 +94,6 @@ double polishNotationEval(std::string & polishNotation, std::vector<Variable> & 
     return finalResult;
 }
 
-/**
- * def postfixEval(postfixExpr):
-    operandStack = Stack()
-    tokenList = postfixExpr.split()
-
-    for token in tokenList:
-                else:
-            operand2 = operandStack.pop()
-            operand1 = operandStack.pop()
-            result = doMath(token,operand1,operand2)
-            operandStack.push(result)
-    return operandStack.pop()
- */
-
-
-
-
-
-
 double calculate(char operatorChar, double num1, double num2) {
     switch (operatorChar) {
         case  '+':
@@ -126,11 +107,6 @@ double calculate(char operatorChar, double num1, double num2) {
     }
     return 0.0;
 }
-
-
-
-
-
 
 bool isAlphaChar(const char zn) {
     if ((zn >= 'A' && zn <= 'Z') || (zn >= 'a' && zn <= 'z')) {
